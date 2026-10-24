@@ -49,8 +49,9 @@ version_gt() {
     return 1
 }
 
+# 注意：模式以 '-' 开头，必须用 '--' 分隔，否则 grep 会把它当成选项
 is_prerelease() {
-    echo "$1" | grep -qiE '-(beta|alpha|pre|rc|snapshot)'
+    echo "$1" | grep -qiE -- '-(beta|alpha|pre|rc|snapshot)'
 }
 
 # ---------- 获取版本列表 ----------
@@ -78,7 +79,7 @@ echo "✅ 共发现 ${#ALL_VERSIONS[@]} 个 NeoForge 版本，开始按 Minecraf
 declare -A LATEST_PER_MC
 
 for VER in "${ALL_VERSIONS[@]}"; do
-    MC_KEY=$(echo "$VER" | grep -oE '^[0-9]+\.[0-9]+' || true)
+    MC_KEY=$(echo "$VER" | grep -oE -- '^[0-9]+\.[0-9]+' || true)
     [[ -z "$MC_KEY" ]] && continue
 
     CURRENT="${LATEST_PER_MC[$MC_KEY]:-}"
