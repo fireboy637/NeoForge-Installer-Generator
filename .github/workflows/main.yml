@@ -26,6 +26,6 @@ jobs:
           tag_name: neoforge-offline-${{ github.run_number }}
           name: NeoForge Offline Installers
           files: |
-            neoforge-offline-latest/offline/*/*.jar
+            neoforge-offline-latest/**/*fat.jar
 
 
