@@ -1,6 +1,9 @@
 name: generate
 on: [workflow_dispatch, push]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,9 +18,10 @@ jobs:
       - name: Generate Installer
         run: bash generate.sh
         continue-on-error: true
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v7
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          path: neoforge-offline-latest
+          files: |
+            neoforge-offline-latest/offline/**/*.jar
 
 
