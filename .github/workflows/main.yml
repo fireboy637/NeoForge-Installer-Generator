@@ -13,7 +13,7 @@ jobs:
           java-version: '25'
           distribution: 'microsoft'
       - name: Generate Installer
-        run: sh generate.sh
+        run: bash generate.sh
       - name: Upload Artifacts
         uses: actions/upload-artifact@v7
         with:
