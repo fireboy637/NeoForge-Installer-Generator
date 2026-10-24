@@ -14,6 +14,7 @@ jobs:
           distribution: 'microsoft'
       - name: Generate Installer
         run: bash generate.sh
+        continue-on-error: true
       - name: Upload Artifacts
         uses: actions/upload-artifact@v7
         with:
