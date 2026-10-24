@@ -18,12 +18,14 @@ jobs:
       - name: Generate Installer
         run: bash generate.sh
         continue-on-error: true
+      - name: List generated files (debug)
+        run: find neoforge-offline-latest -type f | head -200 || true
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: neoforge-offline-${{ github.run_number }}
           name: NeoForge Offline Installers
           files: |
-            neoforge-offline-latest/offline/**/*.jar
+            neoforge-offline-latest/offline/*/*.jar
 
 
