@@ -3,7 +3,7 @@ on: [workflow_dispatch, push]
 
 jobs:
     build:
-        runs-on: ububtu-latest
+        runs-on: ubuntu-latest
         steps:
           - name: Checkout Repository
             uses: actions/checkout@v6
